@@ -1,0 +1,81 @@
+{
+  "name": "nestjs",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "cd /app && rimraf dist && tsc -p ./src/tsconfig.prebuild.json",
+    "generateGql": "ts-node -r ./src/tsconfig.prebuild.json ./src/app/main.generate.gql.ts",
+    "start:prod": "cd /app && node ./dist/AppModule/main.js",
+    "start:dev": "cd /app && tsc-watch -p ./src/tsconfig.prebuild.json --onSuccess \"node --inspect=0.0.0.0:9229 ./dist/AppModule/main.js\"",
+    "command": "cd /app && COMMAND=true node ./dist/AppModule/cli.js",
+    "test": "bash ./src/AppModule/bin/test.sh",
+    "test:watch": "RUN_WATCH=WATCH bash ./src/AppModule/bin/test.sh"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^2.0.3",
+    "@golevelup/nestjs-rabbitmq": "^2.3.0",
+    "@nestjs/apollo": "^10.0.12",
+    "@nestjs/axios": "^0.0.8",
+    "@nestjs/common": "^8.2.2",
+    "@nestjs/core": "^8.2.2",
+    "@nestjs/graphql": "^10.0.12",
+    "@nestjs/platform-express": "8.2.2",
+    "@nestjs/swagger": "^5.2.1",
+    "@nestjs/typeorm": "8.0.2",
+    "apollo-server-express": "3.5.0",
+    "bcrypt": "^5.0.1",
+    "glob": "^8.0.3",
+    "graphql-scalars": "^1.17.0",
+    "mysql": "2.18.1",
+    "nestjs-command": "^3.1.1",
+    "pascal-case": "^3.1.2",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0",
+    "swagger-ui-express": "^4.4.0",
+    "ts-morph": "^13.0.3",
+    "typeorm": "0.2.41"
+  },
+  "devDependencies": {
+    "@types/cron": "^1.7.3",
+    "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.4",
+    "@types/passport": "^1.0.7",
+    "@typescript-eslint/eslint-plugin": "4.29.3",
+    "@typescript-eslint/parser": "4.29.3",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-config-standard-with-typescript": "20.0.0",
+    "eslint-import-resolver-typescript": "2.5.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "3.4.1",
+    "eslint-plugin-promise": "5.2.0",
+    "mocha": "^10.0.0",
+    "ts-node": "^10.4.0",
+    "tsc-watch": "^4.5.0",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.5.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
